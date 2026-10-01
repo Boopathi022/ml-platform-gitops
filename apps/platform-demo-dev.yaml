@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: platform-demo
+  template:
+    metadata:
+      labels:
+        app: platform-demo
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
